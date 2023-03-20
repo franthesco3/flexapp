@@ -1,3 +1,4 @@
+import 'package:flexapp/support/utils/localize.dart';
 import 'package:flutter/material.dart';
 
 import '../styles/app_colors.dart';
@@ -7,6 +8,8 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = Localize.instance.l10n;
+
     return ClipRRect(
       borderRadius: const BorderRadius.only(
         topRight: Radius.circular(10),
@@ -15,18 +18,18 @@ class BottomNavBar extends StatelessWidget {
       child: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: AppColor.blueTheme,
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Início',
+            icon: const Icon(Icons.home),
+            label: l10n.startTitle,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.directions_car),
-            label: 'Veículos',
+            icon: const Icon(Icons.directions_car),
+            label: l10n.vehicleTitle,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.checklist_sharp),
-            label: 'Relatórios',
+            icon: const Icon(Icons.checklist_sharp),
+            label: l10n.report,
           ),
         ],
         selectedItemColor: Colors.white,

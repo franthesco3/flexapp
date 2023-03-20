@@ -1,15 +1,29 @@
-import 'package:flexapp/support/utils/localize.dart';
 import 'package:flutter/material.dart';
-import '../../../support/components/app_bar.dart';
-import '../../../support/components/card_option.dart';
 import '../../../support/styles/app_colors.dart';
-import '../../../support/components/bottom_nav_bar.dart';
-import '../../../support/components/tag_descriptio.dart';
+import '../../../support/components/app_bar.dart';
 import '../../../support/utils/custom_paint.dart';
+import 'package:flexapp/support/utils/localize.dart';
+import '../../../support/components/card_option.dart';
+import '../../../support/components/tag_descriptio.dart';
+import '../../../support/components/bottom_nav_bar.dart';
 
 abstract class MainViewModelProtocol extends ChangeNotifier {
-  void onStartUi();
+  String get fuel;
+  String get ethanol;
   bool get isLoading;
+  String get gasoline;
+  bool get expEthanol;
+  bool get expGasoline;
+  String get valueFuel;
+
+  void onSave();
+  void onStartUi();
+  void setExpEthanol();
+  void didTapEthanol();
+  void setExpGasoline();
+  void didTapGasoline();
+  void changedEthanol(String fuel);
+  void changedGasoline(String fuel);
 }
 
 class MainView extends StatelessWidget {
@@ -27,53 +41,60 @@ class MainView extends StatelessWidget {
       body: CustomPaint(
         painter: MyCustomPaint(),
         child: AnimatedBuilder(
-            animation: viewModel,
-            builder: (_, __) {
-              if (viewModel.isLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(color: Colors.white),
-                );
-              }
+          animation: viewModel,
+          builder: (_, __) {
+            if (viewModel.isLoading) {
+              return const Center(
+                child: CircularProgressIndicator(color: Colors.white),
+              );
+            }
 
-              return Column(
+            return SingleChildScrollView(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const AppBarWidget(),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 60),
                   TagDescription(
+                    onTap: () => viewModel.didTapEthanol(),
                     title: l10n.ethanolTitle.toUpperCase(),
-                    price: '3,80',
+                    price: viewModel.ethanol.toString(),
                   ),
                   const SizedBox(height: 20),
                   TagDescription(
+                    onTap: () => viewModel.didTapGasoline(),
                     title: l10n.gasolineTitle.toUpperCase(),
-                    price: '3,80',
-                  ),
-                  const SizedBox(height: 20),
-                  TagDescription(
-                    title: l10n.average,
-                    price: '3,80',
+                    price: viewModel.gasoline.toString(),
                   ),
                   const SizedBox(height: 60),
-                  SizedBox(
-                    height: 180,
-                    width: double.infinity,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: const [
-                        CardOption(
-                          title: 'Cidade',
-                          subtitle: 'Etanol',
-                          color: AppColor.greenStrong,
-                        ),
-                        CardOption(title: 'Estrada', subtitle: 'Gasolina'),
-                        CardOption(title: 'Estrada', subtitle: 'Gasolina'),
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CardOption(
+                        fuel: viewModel.fuel,
+                        title: l10n.cityTitle,
+                        subtitle: viewModel.fuel,
+                        value: viewModel.valueFuel,
+                        color: AppColor.greenStrong,
+                        isExpanded: viewModel.expEthanol,
+                        onTap: () => viewModel.setExpEthanol(),
+                      ),
+                      CardOption(
+                        fuel: viewModel.fuel,
+                        title: l10n.roadTitle,
+                        subtitle: viewModel.fuel,
+                        value: viewModel.valueFuel,
+                        isExpanded: viewModel.expGasoline,
+                        onTap: () => viewModel.setExpGasoline(),
+                      ),
+                    ],
                   ),
                 ],
-              );
-            }),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
