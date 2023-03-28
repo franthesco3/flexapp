@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'support/utils/localize.dart';
+import 'package:flutter/material.dart';
 import 'features/main_view/main_view_factory.dart';
 import 'package:flutter_gen/gen_l10n/localization.dart';
 import 'package:flexapp/support/utils/mobile_routes.dart';

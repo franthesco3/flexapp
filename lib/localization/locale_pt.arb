@@ -4,9 +4,15 @@
     "app" : "app",
     "average" : "média",
     "appTitle" : "Flex",
+    "saveLabel" : "Salvar",
+    "cityTitle" : "Cidade",
+    "details" : "Detalhes",
+    "roadTitle" : "Estrada",
     "report" : "Relatórios",
     "startTitle" : "Início",
     "vehicleTitle" : "Veículo",
     "ethanolTitle" : "Etanol",
-    "gasolineTitle" : "Gasolina"
+    "gasolineTitle" : "Gasolina",
+    "newPriceTitle" : "Insira um novo preço"
+    
 }
