@@ -24,9 +24,9 @@ class CardOption extends StatelessWidget {
   });
 
   Color get colorCard {
-    if (color == null) return AppColor.redDown;
+    if (color == null) return AppColors.redDown;
 
-    return color ?? AppColor.redDown;
+    return color ?? AppColors.redDown;
   }
 
   double get expandedContainer {

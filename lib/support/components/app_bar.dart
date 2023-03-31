@@ -16,7 +16,7 @@ class AppBarWidget extends StatelessWidget {
           text: l10n.appTitle,
           style: const TextStyle(
             fontSize: 50,
-            color: AppColor.greenDown,
+            color: AppColors.greenDown,
             fontWeight: FontWeight.bold,
           ),
           children: [
@@ -25,7 +25,7 @@ class AppBarWidget extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 50,
                 fontWeight: FontWeight.bold,
-                color: AppColor.bluePurple,
+                color: AppColors.bluePurple,
               ),
             )
           ],

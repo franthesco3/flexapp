@@ -76,7 +76,7 @@ class MainView extends StatelessWidget {
                         title: l10n.cityTitle,
                         subtitle: viewModel.fuel,
                         value: viewModel.valueFuel,
-                        color: AppColor.greenStrong,
+                        color: AppColors.greenStrong,
                         onTap: viewModel.setExpEthanol,
                         isExpanded: viewModel.expEthanol,
                       ),

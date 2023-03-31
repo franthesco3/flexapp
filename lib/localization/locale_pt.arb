@@ -13,6 +13,7 @@
     "vehicleTitle" : "Veículo",
     "ethanolTitle" : "Etanol",
     "gasolineTitle" : "Gasolina",
-    "newPriceTitle" : "Insira um novo preço"
+    "newPriceTitle" : "Insira um novo preço",
+    "addNewVehicleTitle" : "Cadastrar novo veículo"
     
 }

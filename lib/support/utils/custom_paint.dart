@@ -9,7 +9,7 @@ class MyCustomPaint extends CustomPainter {
 
     paint.style = PaintingStyle.fill;
     paint.strokeWidth = 10;
-    paint.color = AppColor.blueTheme;
+    paint.color = AppColors.blueTheme;
     path.moveTo(0, -200);
 
     path.lineTo(size.width, size.height);
